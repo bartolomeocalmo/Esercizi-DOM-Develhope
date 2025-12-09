@@ -10,3 +10,7 @@ const $body = document.body;
 $btn.addEventListener("click", function () {
   $body.classList.toggle("theme");
 });
+
+/*
+const button = document.querySelector('.btn'); button.addEventListener('click', () => { document.body.classList.add('theme'); });
+*/

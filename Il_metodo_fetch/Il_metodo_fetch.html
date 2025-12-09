@@ -1,0 +1,35 @@
+<!--Lo scopo di questo task è di mostrare nella pagina una carta de "Il signore degli anelli" con:
+
+Nome del personaggio
+immagine del personaggio
+Prova a fetchare una card dal db del gioco di carte di Lord of the Rings, la documentazione dell'API la puoi trovare a questo link: https://ringsdb.com/api/doc
+Fai in modo che nella tua pagina html spuntino il nome del personaggio della carta, la sua immagine
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signore degli anelli</title>
+  </head>
+  <body>
+    <h1>Card de Il Signore degli Anelli</h1>
+
+    <h2 id="card-name"></h2>
+    <img id="card-img" width="300" />
+
+    <script>
+      fetch("https://ringsdb.com/api/public/cards/")
+        .then((response) => response.json())
+        .then((cards) => {
+          const card = cards[1];
+
+          document.getElementById("card-name").textContent = card.name;
+
+          document.getElementById("card-img").src =
+            "https://ringsdb.com" + card.imagesrc;
+        })
+        .catch((err) => console.error(err));
+    </script>
+  </body>
+</html>
